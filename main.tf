@@ -17,6 +17,7 @@ resource "azurerm_resource_group" "myresourcegroup" {
 
   tags = {
     environment = "Production"
+    owner = "jmartinson"
   }
 }
 
@@ -141,6 +142,7 @@ resource "azurerm_virtual_machine" "catapp" {
 
   tags = {
     environment = "Production"
+    owner = "jmartinson"
   }
 
   # Added to allow destroy to work correctly.
