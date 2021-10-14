@@ -17,6 +17,7 @@ resource "azurerm_resource_group" "myresourcegroup" {
 
   tags = {
     environment = "Production"
+    owner = "jmartinson"
   }
 }
 
@@ -25,6 +26,10 @@ resource "azurerm_virtual_network" "vnet" {
   location            = azurerm_resource_group.myresourcegroup.location
   address_space       = [var.address_space]
   resource_group_name = azurerm_resource_group.myresourcegroup.name
+  tags = {
+    environment = "Production"
+    owner = "jmartinson"
+  }
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -135,7 +140,10 @@ resource "azurerm_virtual_machine" "catapp" {
     disable_password_authentication = false
   }
 
-  tags = {}
+  tags = {
+    environment = "Production"
+    owner = "jmartinson"
+  }
 
   # Added to allow destroy to work correctly.
   depends_on = [azurerm_network_interface_security_group_association.catapp-nic-sg-ass]
